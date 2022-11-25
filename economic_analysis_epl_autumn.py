@@ -8,7 +8,7 @@ from modules.modelling_assumptions import field_50m_assum
 from modules.modelling_assumptions import field_100m_assum
 from modules.modelling_assumptions import market_assumptions
 from modules.modelling_assumptions import tax_assumptions
-from economic_analysis_class import EconomicAnalysis
+from economic_analysis_class import EconomicAnalysis, EconomicResultsGenerator
 from modules.pre_tax_calculations import PreTaxSystem
 from modules.tax_system_other_income import TaxSystemOtherIncome
 from modules.tax_system_no_other_income import TaxSystemWithoutOtherIncome
@@ -43,6 +43,11 @@ market_assumptions['epl_beginning_year'] = 0  # Return to base case of summer
 print(small_no_epl.get_post_tax_economics_other_income())
 print(small_no_epl.get_post_tax_cashflow_other_income())
 print(small_no_epl.get_pre_tax_cashflow())
+
+# %%
+
+EconomicResultsGenerator(field_10m_assum, market_assumptions, tax_assumptions)
+
 
 # %%
 

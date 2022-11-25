@@ -62,3 +62,62 @@ class EconomicAnalysis:
         model = self.create_tax_model_without_other_income()
         post_tax_economics = pd.Series(model.calculate_post_tax_economics(epl_case=self.epl_case))
         return post_tax_economics
+
+
+class EconomicResultsGenerator(EconomicAnalysis):
+    def create_economic_models(self):
+        # Case where with permanent system and summer EPL
+        results_no_epl = EconomicAnalysis(self.field_assumptions,
+                                          self.market_assumptions,
+                                          self.tax_assumptions, epl_case=False)
+
+        results_epl_summer = EconomicAnalysis(self.field_assumptions,
+                                              self.market_assumptions,
+                                              self.tax_assumptions, epl_case=True)
+
+        # Case of new EPL
+        self.market_assumptions['epl_years'] = 6
+        results_epl_autumn = EconomicAnalysis(self.field_assumptions,
+                                             self.market_assumptions,
+                                             self.tax_assumptions, epl_case=True)
+
+        # Case of new EPL and field starting 2019
+        self.market_assumptions['epl_beginning_year'] = 3
+        results_epl_autumn_2019 = EconomicAnalysis(self.field_assumptions,
+                                                  self.market_assumptions,
+                                                  self.tax_assumptions, epl_case=True)
+        self.market_assumptions['epl_years'] = 4  # Return to base case of summer statement
+        self.market_assumptions['epl_beginning_year'] = 0  # Return to base case of summer statement
+
+        return results_no_epl, results_epl_summer, results_epl_autumn, results_epl_autumn_2019
+
+    def create_economic_analysis_results(self):
+        results_no_epl, results_epl_summer, results_epl_autumn, results_epl_autumn_2019 = self.create_economic_models()
+
+        pre_tax_npv = results_no_epl.get_pre_tax_economics().real_pre_tax_npv
+        post_tax_no_epl_other = results_no_epl.get_post_tax_economics_other_income().real_post_tax_npv
+        post_tax_no_epl_no_other_income = results_no_epl.get_post_tax_economics_no_other_income().real_post_tax_npv
+
+        post_tax_epl_summer_other = results_epl_summer.get_post_tax_economics_other_income().real_post_tax_npv
+        post_tax_epl_summer_no_other = results_epl_summer.get_post_tax_economics_no_other_income().real_post_tax_npv
+
+        post_tax_epl_autumn_other = results_epl_autumn.get_post_tax_economics_other_income().real_post_tax_npv
+        post_tax_epl_autumn_no_other = results_epl_autumn.get_post_tax_economics_no_other_income().real_post_tax_npv
+
+        post_tax_epl_autumn_other_delayed = results_epl_autumn_2019.get_post_tax_economics_other_income().real_post_tax_npv
+        post_tax_epl_autumn_no_other_delayed = results_epl_autumn_2019.get_post_tax_economics_no_other_income().real_post_tax_npv
+
+        economics = pd.Series({
+            "Pre tax": pre_tax_npv,
+            "Post tax no EPL other income" : post_tax_no_epl_other,
+            "Post tax no EPL no other income":post_tax_no_epl_no_other_income,
+            "Post tax EPL summer other income": post_tax_epl_summer_other,
+            "Post tax EPL summer no other income": post_tax_epl_summer_no_other,
+            "Post tax EPL autumn other income": post_tax_epl_autumn_other,
+            "Post tax EPL autumn no other income": post_tax_epl_autumn_no_other,
+            "Post tax EPL autumn 2019 start other income": post_tax_epl_autumn_other_delayed,
+            "Post tax EPL autumn 2019 start no other income": post_tax_epl_autumn_no_other_delayed
+        }, name="NPV in Million £, Real values")
+
+        return economics
+
