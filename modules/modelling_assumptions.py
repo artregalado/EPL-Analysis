@@ -116,7 +116,7 @@ tax_assumptions = {
     'sc_rate': 0.10,
     'epl_rate': 0.25,  # epl = energy profits levy
     'epl_beginning_year': 0,  # base case cero if I assume fields begin in 2022.
-    'epl_years': 7,
+    'epl_years': 4,
     # Number of years the EPL will apply as it is only short term assume 4 years from 2022-2025
     'ia_for_sc_rate': 0.625,
     'ia_for_epl_rate': 0.80,
