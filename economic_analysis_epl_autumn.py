@@ -8,8 +8,10 @@ from modules.modelling_assumptions import field_50m_assum
 from modules.modelling_assumptions import field_100m_assum
 from modules.modelling_assumptions import market_assumptions
 from modules.modelling_assumptions import tax_assumptions
-from economic_analysis_class import economic_results_generator
-
+from modules.modelling_assumptions import tax_assumptions_autumn_epl
+from modules.modelling_assumptions import tax_assumptions_delayed_autumn_epl
+from economic_analysis_class import EconomicAnalysis
+from economic_analysis_class import calculate_economic_results
 
 # %% Get results for analysis and plotting
 
@@ -22,40 +24,27 @@ from economic_analysis_class import economic_results_generator
 # See EPL factsheet for more details
 # https://www.gov.uk/government/publications/changes-to-the-energy-oil-and-gas-profits-levy/energy-oil-and-gas-profits-levy
 
+field_assumptions = field_10m_assum
+results_small_field = calculate_economic_results(field_assumptions=field_assumptions,
+                           market_assumptions=market_assumptions,
+                           tax_assumptions=tax_assumptions,
+                           tax_assumptions_autumn_epl=tax_assumptions_autumn_epl,
+                           tax_assumptions_delayed_autumn_epl=tax_assumptions_delayed_autumn_epl)
 
-test_results = economic_results_generator(field_10m_assum, market_assumptions, tax_assumptions)
-print(test_results)
+field_assumptions = field_50m_assum
+results_medium_field = calculate_economic_results(field_assumptions=field_assumptions,
+                           market_assumptions=market_assumptions,
+                           tax_assumptions=tax_assumptions,
+                           tax_assumptions_autumn_epl=tax_assumptions_autumn_epl,
+                           tax_assumptions_delayed_autumn_epl=tax_assumptions_delayed_autumn_epl)
 
-market_assumptions['epl_years'] = 6
-    tax_assumptions['epl_rate'] = 0.35
-    tax_assumptions['ia_for_epl_rate'] = 0.29
-    results_epl_autumn = EconomicAnalysis(field_assumptions,
-                                          market_assumptions,
-                                          tax_assumptions, epl_case=True)
-    market_assumptions['epl_years'] = 4
-    tax_assumptions['epl_rate'] = 0.25
-    tax_assumptions['ia_for_epl_rate'] = 0.80
+field_assumptions = field_100m_assum
+results_large_field = calculate_economic_results(field_assumptions=field_assumptions,
+                           market_assumptions=market_assumptions,
+                           tax_assumptions=tax_assumptions,
+                           tax_assumptions_autumn_epl=tax_assumptions_autumn_epl,
+                           tax_assumptions_delayed_autumn_epl=tax_assumptions_delayed_autumn_epl)
 
-# %%
-# Case where with permanent system and summer EPL
-# small_no_epl = EconomicAnalysis(field_10m_assum, market_assumptions, tax_assumptions, epl_case=False)
-# small_epl_summer = EconomicAnalysis(field_10m_assum, market_assumptions, tax_assumptions, epl_case=True)
-#
-# # Case of new EPL
-# market_assumptions['epl_years'] = 6
-# small_epl_autumn = EconomicAnalysis(field_10m_assum, market_assumptions, tax_assumptions, epl_case=True)
-#
-# # Case of new EPL and field starting 2019
-# market_assumptions['epl_beginning_year'] = 3
-# small_epl_autumn_2019 = EconomicAnalysis(field_10m_assum, market_assumptions, tax_assumptions, epl_case=True)
-# market_assumptions['epl_years'] = 4  # Return to base case of summer
-# market_assumptions['epl_beginning_year'] = 0  # Return to base case of summer
-#
-# # %%
-#
-# print(small_no_epl.get_post_tax_economics_other_income())
-# print(small_no_epl.get_post_tax_cashflow_other_income())
-# print(small_no_epl.get_pre_tax_cashflow())
 # %%
 
 # plt.plot(pre_tax_cashflow['ncf'], label='pre-tax', c='grey')
