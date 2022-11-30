@@ -86,14 +86,13 @@ field_150m_assum = {
 
 ###############################################################################
 ## Market assumptions
-# TODO need to update assumptions based on this OBR fiscal projections
 
 market_assumptions = {
     'oil_price': 60,  # USD / bbl (Nominal Brent Oil Price)
     'gas_price': None,  # Pence / Therm (UK NBC Gas price)
     'gas_to_boe_factor': 1 / 5800,  # Retrieved from the OGA UK Reserves Report
     'discount_factor': 0.10,  # Discount rate for DCF 1 = 100%
-    'exchange_rate': 1.2908,  # USD per pound
+    'exchange_rate': 1.2002	,  # USD per pound as of 29 November 2022 from Bank of Engalnd
     'cpi': 0.02,  # Consumer price index 1 = 100%
     'spi': 0.02,  # Services producer index 1 = 100%
     'working_interest': 1,  # Working interest of the company in the field 1 = 100%
@@ -125,6 +124,19 @@ tax_assumptions = {
     'rfes_rate': 0.10
 }
 
+tax_assumptions_delayed_summer_epl = {
+    'ct_rate': 0.30,
+    'sc_rate': 0.10,
+    'epl_rate': 0.25,  # epl = energy profits levy
+    'epl_beginning_year': 3,  # base case cero if I assume fields begin in 2022.
+    'epl_years': 4,
+    # Number of years the EPL will apply as it is only short term assume 4 years from 2022-2025
+    'ia_for_sc_rate': 0.625,
+    'ia_for_epl_rate': 0.80,
+    # Note that this 80% is allowance on energy levy payable, so you reduce your epl paid
+    'decommx_relief_rate': .40,
+    'rfes_rate': 0.10
+}
 
 tax_assumptions_autumn_epl = {
     'ct_rate': 0.30,
@@ -139,6 +151,7 @@ tax_assumptions_autumn_epl = {
     'decommx_relief_rate': .40,
     'rfes_rate': 0.10
 }
+
 
 tax_assumptions_delayed_autumn_epl = {
     'ct_rate': 0.30,

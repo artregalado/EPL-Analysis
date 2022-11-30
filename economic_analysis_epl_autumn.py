@@ -10,6 +10,7 @@ from modules.modelling_assumptions import market_assumptions
 from modules.modelling_assumptions import tax_assumptions
 from modules.modelling_assumptions import tax_assumptions_autumn_epl
 from modules.modelling_assumptions import tax_assumptions_delayed_autumn_epl
+from modules.modelling_assumptions import tax_assumptions_delayed_summer_epl
 from economic_analysis_class import calculate_economic_results
 from economic_analysis_class import calculate_cashflow_results
 
@@ -29,6 +30,7 @@ results_small_field = calculate_economic_results(field_assumptions=field_assumpt
                                                  market_assumptions=market_assumptions,
                                                  tax_assumptions=tax_assumptions,
                                                  tax_assumptions_autumn_epl=tax_assumptions_autumn_epl,
+                                                 tax_assumptions_delayed_summer_epl=tax_assumptions_delayed_summer_epl,
                                                  tax_assumptions_delayed_autumn_epl=tax_assumptions_delayed_autumn_epl)
 
 field_assumptions = field_50m_assum
@@ -36,6 +38,7 @@ results_medium_field = calculate_economic_results(field_assumptions=field_assump
                                                   market_assumptions=market_assumptions,
                                                   tax_assumptions=tax_assumptions,
                                                   tax_assumptions_autumn_epl=tax_assumptions_autumn_epl,
+                                                  tax_assumptions_delayed_summer_epl=tax_assumptions_delayed_summer_epl,
                                                   tax_assumptions_delayed_autumn_epl=tax_assumptions_delayed_autumn_epl)
 
 field_assumptions = field_100m_assum
@@ -43,6 +46,7 @@ results_large_field = calculate_economic_results(field_assumptions=field_assumpt
                                                  market_assumptions=market_assumptions,
                                                  tax_assumptions=tax_assumptions,
                                                  tax_assumptions_autumn_epl=tax_assumptions_autumn_epl,
+                                                 tax_assumptions_delayed_summer_epl=tax_assumptions_delayed_summer_epl,
                                                  tax_assumptions_delayed_autumn_epl=tax_assumptions_delayed_autumn_epl)
 
 field_assumptions = field_10m_assum
@@ -50,6 +54,7 @@ cashflow_small_field = calculate_cashflow_results(field_assumptions=field_assump
                                                   market_assumptions=market_assumptions,
                                                   tax_assumptions=tax_assumptions,
                                                   tax_assumptions_autumn_epl=tax_assumptions_autumn_epl,
+                                                  tax_assumptions_delayed_summer_epl=tax_assumptions_delayed_summer_epl,
                                                   tax_assumptions_delayed_autumn_epl=tax_assumptions_delayed_autumn_epl)
 
 field_assumptions = field_50m_assum
@@ -57,6 +62,7 @@ cashflow_medium_field = calculate_cashflow_results(field_assumptions=field_assum
                                                    market_assumptions=market_assumptions,
                                                    tax_assumptions=tax_assumptions,
                                                    tax_assumptions_autumn_epl=tax_assumptions_autumn_epl,
+                                                   tax_assumptions_delayed_summer_epl=tax_assumptions_delayed_summer_epl,
                                                    tax_assumptions_delayed_autumn_epl=tax_assumptions_delayed_autumn_epl)
 
 field_assumptions = field_100m_assum
@@ -64,6 +70,7 @@ cashflow_large_field = calculate_cashflow_results(field_assumptions=field_assump
                                                   market_assumptions=market_assumptions,
                                                   tax_assumptions=tax_assumptions,
                                                   tax_assumptions_autumn_epl=tax_assumptions_autumn_epl,
+                                                  tax_assumptions_delayed_summer_epl=tax_assumptions_delayed_summer_epl,
                                                   tax_assumptions_delayed_autumn_epl=tax_assumptions_delayed_autumn_epl)
 
 # %%
