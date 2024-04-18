@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 from modules.pre_tax_calculations import PreTaxSystem
-from modules.tax_system_other_income import TaxSystemOtherIncome
+from modules.labour_epl3b_tax_system_other_income import TaxSystemOtherIncome
 from modules.tax_system_no_other_income import TaxSystemWithoutOtherIncome
 
 

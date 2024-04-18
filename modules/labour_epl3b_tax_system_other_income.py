@@ -102,6 +102,10 @@ class TaxSystemOtherIncome:
         epl_saved_from_ia = devex * self.tax_assumptions['epl_rate'] * self.tax_assumptions['ia_for_epl_rate']
         epl_saved_from_first_year = devex * self.tax_assumptions['epl_rate']
         epl_saved = epl_saved_from_ia + epl_saved_from_first_year
+        
+        # In case of Labour EPL3b there is no savings from IA or first year
+        epl_saved = np.zeros_like(epl_saved)
+         
 
         epl_paid = []
         for profit in np.nditer(profits):
@@ -149,6 +153,8 @@ class TaxSystemOtherIncome:
         sc_paid, sc_saved = self.calculate_supplementary_charge()
         decomm_saved = self.calculate_decomm_relief()
 
+        # If EPL-b from labour is approved, this means the EPL capitall allowance is
+        # not applicable, and thus there are no savings from EPL. 
         tax_savings = ct_saved + sc_saved + decomm_saved
         tax_paid = ct_paid + sc_paid
         post_tax_ncf = self.pre_tax_cashflow['ncf'] + tax_savings - tax_paid
