@@ -110,16 +110,29 @@ market_assumptions = {
 #
 # % Case 1: Other income available to offset losses
 
-# Tax cases assuming fiscal year to avoid problems with the Levys ending in March and not having monthly modelling
+# Tax cases assuming fiscal year to avoid problems with the Levy ending in March and not having monthly modelling
 
 # Base assumptions with EPL as applicable before the July 29, 2024 announced changes by Labour
 tax_assumptions = {
     'ct_rate': 0.30,
     'sc_rate': 0.10,
     'epl_rate': 0.35,
-    'epl_beginning_year': 0,  # base case cero if I assume fields begin in 2024.
+    'epl_beginning_year': 0,  # base case cero if I assume fields begin in 2025.
     'epl_years': 4,
     # Number of years the EPL will apply, if 4 then 2025-2029
+    'ia_for_sc_rate': 0.625,
+    'ia_for_epl_rate': 0.29,
+    # Note that this 80% is allowance on energy levy payable, so you reduce your epl paid
+    'decommx_relief_rate': .40,
+    'rfes_rate': 0.10
+}
+
+tax_assumptions_autumn_epl = {
+    'ct_rate': 0.30,
+    'sc_rate': 0.10,
+    'epl_rate': 0.35,  # epl = energy profits levy
+    'epl_beginning_year': 0,  # base case cero if I assume fields begin in 2025.
+    'epl_years': 4,
     'ia_for_sc_rate': 0.625,
     'ia_for_epl_rate': 0.29,
     # Note that this 80% is allowance on energy levy payable, so you reduce your epl paid
@@ -133,7 +146,7 @@ tax_assumptions_labour_epl_a = {
     'ct_rate': 0.30,
     'sc_rate': 0.10,
     'epl_rate': 0.38,
-    'epl_beginning_year': 0,  # base case cero if I assume fields begin in 2024.
+    'epl_beginning_year': 0,  # base case cero if I assume fields begin in 2025.
     'epl_years': 5, # Propose for levy to end in March 2030
     'ia_for_sc_rate': 0.625,
     'ia_for_epl_rate': 0, # No investment allowance for EPL
@@ -166,19 +179,6 @@ tax_assumptions_delayed_summer_epl = {
     # Number of years the EPL will apply as it is only short term assume 4 years from 2022-2025
     'ia_for_sc_rate': 0.625,
     'ia_for_epl_rate': 0.80,
-    # Note that this 80% is allowance on energy levy payable, so you reduce your epl paid
-    'decommx_relief_rate': .40,
-    'rfes_rate': 0.10
-}
-
-tax_assumptions_autumn_epl = {
-    'ct_rate': 0.30,
-    'sc_rate': 0.10,
-    'epl_rate': 0.35,  # epl = energy profits levy
-    'epl_beginning_year': 0,  # base case cero if I assume fields begin in 2022.
-    'epl_years': 5, 
-    'ia_for_sc_rate': 0.625,
-    'ia_for_epl_rate': 0.29,
     # Note that this 80% is allowance on energy levy payable, so you reduce your epl paid
     'decommx_relief_rate': .40,
     'rfes_rate': 0.10
