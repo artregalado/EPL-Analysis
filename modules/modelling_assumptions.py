@@ -14,8 +14,8 @@ field_10m_assum = {
     'production_profile': [3650000, 2482000, 1687760, 1147676, 780420, 530685, 360866, 245389,
                            166864, 113467, 77158,
                            52467, 35677, 24261, 16497, 11218, 7628, 5187, 3527, 2398],
-    'devex': 19,
-    'opex': 0.0875,
+    'devex': 19 / 1.3217, # to convert to GBP
+    'opex': 0.0875 * 1.05, # add 5% carbon pricing cost
     'decommx': 0.1
 }
 
@@ -29,8 +29,8 @@ field_25m_assum = {
     'production_profile': [6387500, 4599000, 3311280, 2384122, 1716568, 1235929, 889869, 640705,
                            461308, 332142,
                            239142, 172182, 123971, 89259, 64267, 46272, 33316, 23987, 17271, 12435],
-    'devex': 16,
-    'opex': 0.0825,
+    'devex': 16 / 1.3217, # to convert to GBP
+    'opex': 0.0825 * 1.05, # add 5% carbon pricing cost
     'decommx': 0.1
 }
 
@@ -45,8 +45,8 @@ field_50m_assum = {
                            1705256, 1278942,
                            959206, 719405, 539553, 404665, 303499, 227624, 170718, 128038, 96028,
                            72021],
-    'devex': 13,
-    'opex': 0.0775,
+    'devex': 13 / 1.3217, # to convert to GBP
+    'opex': 0.0775 * 1.05, # add 5% carbon pricing cost
     'decommx': 0.1
 }
 
@@ -62,8 +62,8 @@ field_100m_assum = {
                            3444572, 2755658, 2204526, 1763621, 1410897, 1128717, 902974, 722379,
                            577903, 462323,
                            369858],
-    'devex': 10,
-    'opex': 0.0725,
+    'devex': 10 / 1.3217, # to convert to GBP
+    'opex': 0.0725 * 1.05, # add 5% carbon pricing cost
     'decommx': 0.1
 }
 
@@ -79,8 +79,8 @@ field_150m_assum = {
                            5142938, 4114350, 3291480, 2633184, 2106547, 1685238, 1348190, 1078552,
                            862842, 690273,
                            552219],
-    'devex': 7,
-    'opex': 0.0675,
+    'devex': 7 / 1.3217, # to convert to GBP
+    'opex': 0.0675 * 1.05, # add 5% carbon pricing cost
     'decommx': 0.1
 }
 
@@ -88,7 +88,10 @@ field_150m_assum = {
 ## Market assumptions
 
 market_assumptions = {
-    'oil_price': 73,  # USD / bbl (Nominal Brent Oil Price), average for 2024-2029 from OBR March 2024 Outlook
+
+    # 70 USD / bbl (Nominal Brent Oil Price), Real 2025 average for 2025-2030 from
+    # OBR March 2024 Outlook. See excel file for calcs. Price converted to get value in £
+    'oil_price': 70 / 1.3217,  # Conversion to get value in £
     'gas_price': None,  # Pence / Therm (UK NBC Gas price)
     'gas_to_boe_factor': 1 / 5800,  # Retrieved from the OGA UK Reserves Report
     'discount_factor': 0.10,  # Discount rate for DCF 1 = 100%
