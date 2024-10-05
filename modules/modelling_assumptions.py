@@ -88,12 +88,12 @@ field_150m_assum = {
 ## Market assumptions
 
 market_assumptions = {
-    'oil_price': 60,  # USD / bbl (Nominal Brent Oil Price)
+    'oil_price': 73,  # USD / bbl (Nominal Brent Oil Price), average for 2024-2029 from OBR March 2024 Outlook
     'gas_price': None,  # Pence / Therm (UK NBC Gas price)
     'gas_to_boe_factor': 1 / 5800,  # Retrieved from the OGA UK Reserves Report
     'discount_factor': 0.10,  # Discount rate for DCF 1 = 100%
-    'exchange_rate': 1.2002	,  # USD per pound as of 29 November 2022 from Bank of Engalnd
-    'cpi': 0.02,  # Consumer price index 1 = 100%
+    'exchange_rate': 1.3217	,  # USD per pound average for September 2024 from Bank of England, retrieve 5 Oct 2024
+    'cpi': 0.02,  # Consumer price index 1 = 100% = set to the target of the Bank of England
     'spi': 0.02,  # Services producer index 1 = 100%
     'working_interest': 1,  # Working interest of the company in the field 1 = 100%
     'inflation': 0.02,  # Inflation rate to discount for Real NPV
@@ -110,20 +110,53 @@ market_assumptions = {
 #
 # % Case 1: Other income available to offset losses
 
+# Tax cases assuming fiscal year to avoid problems with the Levys ending in March and not having monthly modelling
+
+# Base assumptions with EPL as applicable before the July 29, 2024 announced changes by Labour
 tax_assumptions = {
     'ct_rate': 0.30,
     'sc_rate': 0.10,
-    'epl_rate': 0.25,  # epl = energy profits levy
-    'epl_beginning_year': 0,  # base case cero if I assume fields begin in 2022.
-    'epl_years': 2,
-    # Number of years the EPL will apply as it is only short term assume 4 years from 2022-2025
+    'epl_rate': 0.35,
+    'epl_beginning_year': 0,  # base case cero if I assume fields begin in 2024.
+    'epl_years': 4,
+    # Number of years the EPL will apply, if 4 then 2025-2029
     'ia_for_sc_rate': 0.625,
-    'ia_for_epl_rate': 0.80,
+    'ia_for_epl_rate': 0.29,
     # Note that this 80% is allowance on energy levy payable, so you reduce your epl paid
     'decommx_relief_rate': .40,
     'rfes_rate': 0.10
 }
 
+# New tax case assumptions for Labour's proposals.
+
+tax_assumptions_labour_epl_a = {
+    'ct_rate': 0.30,
+    'sc_rate': 0.10,
+    'epl_rate': 0.38,
+    'epl_beginning_year': 0,  # base case cero if I assume fields begin in 2024.
+    'epl_years': 5, # Propose for levy to end in March 2030
+    'ia_for_sc_rate': 0.625,
+    'ia_for_epl_rate': 0, # No investment allowance for EPL
+    # Note that this 80% is allowance on energy levy payable, so you reduce your epl paid
+    'decommx_relief_rate': .40,
+    'rfes_rate': 0.10
+}
+
+tax_assumptions_labour_epl_b = {
+    'ct_rate': 0.30,
+    'sc_rate': 0.10,
+    'epl_rate': 0.38,
+    'epl_beginning_year': 0,  # base case cero if I assume fields begin in 2024.
+    'epl_years': 5, # Propose for levy to end in March 2030
+    'ia_for_sc_rate': 0.625,
+    'ia_for_epl_rate': 0, # No investment allowance for EPL
+    'decommx_relief_rate': .40,
+    'rfes_rate': 0.10
+    # The removal of the capital allowance is done in the modelling with the labour_epl3b_tax_system class
+}
+
+
+# These remaining tax assumptions are legacy and not used in the revised paper of October 2024, are left here for reference
 tax_assumptions_delayed_summer_epl = {
     'ct_rate': 0.30,
     'sc_rate': 0.10,
@@ -165,30 +198,6 @@ tax_assumptions_delayed_autumn_epl = {
     'rfes_rate': 0.10
 }
 
-tax_assumptions_labour_epl_a = {
-    'ct_rate': 0.30,
-    'sc_rate': 0.10,
-    'epl_rate': 0.38,  # epl = energy profits levy
-    'epl_beginning_year': 0,  # base case cero if I assume fields begin in 2022.
-    'epl_years': 6, # Propose for levy to end in 2029
-    'ia_for_sc_rate': 0.625,
-    'ia_for_epl_rate': 0, # No investment allowance for EPL
-    # Note that this 80% is allowance on energy levy payable, so you reduce your epl paid
-    'decommx_relief_rate': .40,
-    'rfes_rate': 0.10
-}
-
-tax_assumptions_labour_epl_b = {
-    'ct_rate': 0.30,
-    'sc_rate': 0.10,
-    'epl_rate': 0.38,  # epl = energy profits levy
-    'epl_beginning_year': 0,  # base case cero if I assume fields begin in 2022.
-    'epl_years': 6, # Propose for levy to end in 2029
-    'ia_for_sc_rate': 0.625,
-    'ia_for_epl_rate': 0, # No investment allowance for EPL
-    'decommx_relief_rate': .40,
-    'rfes_rate': 0.10
-}
 
 tax_assumptions_delayed_labour_epl_a = {
     'ct_rate': 0.30,
