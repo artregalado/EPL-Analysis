@@ -115,7 +115,7 @@ tax_assumptions = {
     'sc_rate': 0.10,
     'epl_rate': 0.25,  # epl = energy profits levy
     'epl_beginning_year': 0,  # base case cero if I assume fields begin in 2022.
-    'epl_years': 4,
+    'epl_years': 2,
     # Number of years the EPL will apply as it is only short term assume 4 years from 2022-2025
     'ia_for_sc_rate': 0.625,
     'ia_for_epl_rate': 0.80,
@@ -128,8 +128,8 @@ tax_assumptions_delayed_summer_epl = {
     'ct_rate': 0.30,
     'sc_rate': 0.10,
     'epl_rate': 0.25,  # epl = energy profits levy
-    'epl_beginning_year': 3,  # base case cero if I assume fields begin in 2022.
-    'epl_years': 4,
+    'epl_beginning_year': 0,  # base case cero if I assume fields begin in 2022.
+    'epl_years': 5,
     # Number of years the EPL will apply as it is only short term assume 4 years from 2022-2025
     'ia_for_sc_rate': 0.625,
     'ia_for_epl_rate': 0.80,
@@ -143,7 +143,7 @@ tax_assumptions_autumn_epl = {
     'sc_rate': 0.10,
     'epl_rate': 0.35,  # epl = energy profits levy
     'epl_beginning_year': 0,  # base case cero if I assume fields begin in 2022.
-    'epl_years': 6,
+    'epl_years': 5, 
     'ia_for_sc_rate': 0.625,
     'ia_for_epl_rate': 0.29,
     # Note that this 80% is allowance on energy levy payable, so you reduce your epl paid
@@ -156,8 +156,8 @@ tax_assumptions_delayed_autumn_epl = {
     'ct_rate': 0.30,
     'sc_rate': 0.10,
     'epl_rate': 0.35,  # epl = energy profits levy
-    'epl_beginning_year': 3,  # 2019 start year
-    'epl_years': 6,
+    'epl_beginning_year': 0,  # 2019 start year
+    'epl_years': 5,
     'ia_for_sc_rate': 0.625,
     'ia_for_epl_rate': 0.29,
     # Note that this 80% is allowance on energy levy payable, so you reduce your epl paid
@@ -170,7 +170,7 @@ tax_assumptions_labour_epl_a = {
     'sc_rate': 0.10,
     'epl_rate': 0.38,  # epl = energy profits levy
     'epl_beginning_year': 0,  # base case cero if I assume fields begin in 2022.
-    'epl_years': 8, # Propose for levy to end in 2029
+    'epl_years': 6, # Propose for levy to end in 2029
     'ia_for_sc_rate': 0.625,
     'ia_for_epl_rate': 0, # No investment allowance for EPL
     # Note that this 80% is allowance on energy levy payable, so you reduce your epl paid
@@ -183,7 +183,7 @@ tax_assumptions_labour_epl_b = {
     'sc_rate': 0.10,
     'epl_rate': 0.38,  # epl = energy profits levy
     'epl_beginning_year': 0,  # base case cero if I assume fields begin in 2022.
-    'epl_years': 8, # Propose for levy to end in 2029
+    'epl_years': 6, # Propose for levy to end in 2029
     'ia_for_sc_rate': 0.625,
     'ia_for_epl_rate': 0, # No investment allowance for EPL
     'decommx_relief_rate': .40,
@@ -195,7 +195,7 @@ tax_assumptions_delayed_labour_epl_a = {
     'sc_rate': 0.10,
     'epl_rate': 0.38,  # epl = energy profits levy
     'epl_beginning_year': 0,  # base case cero if I assume fields begin in 2022.
-    'epl_years': 8, # Propose for levy to end in 2029
+    'epl_years': 6, # Propose for levy to end in 2029
     'ia_for_sc_rate': 0.625,
     'ia_for_epl_rate': 0, # No investment allowance for EPL
     # Note that this 80% is allowance on energy levy payable, so you reduce your epl paid
@@ -208,7 +208,7 @@ tax_assumptions_delayed_labour_epl_b = {
     'sc_rate': 0.10,
     'epl_rate': 0.38,  # epl = energy profits levy
     'epl_beginning_year': 0,  # base case cero if I assume fields begin in 2022.
-    'epl_years': 8, # Propose for levy to end in 2029
+    'epl_years': 6, # Propose for levy to end in 2029
     'ia_for_sc_rate': 0.625,
     'ia_for_epl_rate': 0, # No investment allowance for EPL
     'decommx_relief_rate': .40,
